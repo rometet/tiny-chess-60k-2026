@@ -48,11 +48,8 @@ Sunfish benchmark.
 - Applying the published practice-Elo formula to these games gives local estimates of about 1,173 for the original engine and 1,396 for the 60,000-node variant.
 - These figures are local estimates only, not the official practice score.
 - They do not guarantee a prize or any official result.
-- These are unofficial local practice results only, not tournament outcomes.
-- They are not prizes, scores, or standings from any official competition.
 - Local matches can vary with hardware, time controls, and opponent behavior.
 - The eight-game sample is small, so treat these numbers as a rough indication only.
-- No formal grading or prize claim is implied by either result.
 
 ## Limitations
 
