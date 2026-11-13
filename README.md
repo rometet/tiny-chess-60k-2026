@@ -1,23 +1,37 @@
-﻿# Tiny chess contest engine
+# Chess Agent (4 KB Python)
 
-- A deterministic chess agent written in Python 3.13 for the make.fun tiny-chess-01 contest.
-- Entry point is `main.py`, which must be launched as `python main.py` with `MAKEFUN_ENV_URL` set.
-- Packaging is a single source line: an lzma-compressed, base85-encoded payload that is decompressed and executed at import.
-- The payload imports only the standard library modules `base64` and `lzma` before decompression.
-- The source file is sized to fit the contest's 4 KB source limit.
-- Search is bounded so that every turn returns within the time budget.
-- Legality is enforced by a move generator that filters out moves leaving the king in check.
-- Quiescence search receives the king-in-check flag, so checking captures are searched as evasions.
-- Check nodes with no legal replies return a mate score instead of a static evaluation.
-- Perft counts match the reference move generator on the standard test positions.
-- `best()` is deterministic and returns identical moves across repeated calls on the same position.
-- A self-play smoke run produced 16 consecutive legal half-moves from the start position.
+A small, single-file Python chess agent. The engine is embedded in `main.py` as
+Base85-encoded, LZMA-compressed data, keeping the source compact. It uses only
+the Python standard library, so there is nothing to install.
+
+## Run
+
+```sh
+python main.py
+```
+
+Python 3 is required. No third-party packages are needed.
+
+The contest entrypoint needs the contest runner environment to execute; the
+plain `python main.py` command above is not sufficient for a full game.
+
+## Local verification
+
+- Three smoke positions were tested; each returned a legal move.
+- A 24-half-move self-play run completed with legal moves throughout.
+- The latest run recorded a maximum of 1.052 seconds per move.
+- The enforced per-move limit is 10 seconds.
+- These local smoke checks are separate from running the contest program; they do not exercise the contest entry point.
+
+## Scope
+
+These are local smoke tests only. They are not an official tournament match,
+and they do not establish playing strength. No claim is made about beating the
+Sunfish benchmark.
 
 ## Limitations
 
-- Search depth is bounded, so tactics beyond the horizon are not seen.
-- No opening book is included; opening play comes from search alone.
-- No endgame tablebases are used.
-- Only the Python standard library is used; there are no third-party dependencies.
-- The 4 KB source limit constrains the amount of code that can ship.
-- Verification covers movegen, perft, and short self-play runs, not long tournament play.
+- Not validated in tournament play or against rated engines.
+- Move timing was measured on one local machine and may vary elsewhere.
+- The compressed engine block is opaque; edit it only with care.
+- The agent is intentionally small, so search depth and strength are limited.
