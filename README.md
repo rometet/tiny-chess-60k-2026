@@ -29,6 +29,31 @@ These are local smoke tests only. They are not an official tournament match,
 and they do not establish playing strength. No claim is made about beating the
 Sunfish benchmark.
 
+## Experimental 60k-node variant
+
+- This is a newly added test candidate, not the previously released version.
+- The search budget is 60,000 nodes, increased from the earlier 24,000-node setting.
+- Greater search depth may improve move quality in some positions.
+- Longer searches may also increase response time or cause timing issues.
+- In three local practice games, this variant scored 3 wins and 0 losses against depth-2 through depth-4 opponents.
+- The official grading has not yet been completed; see the local eight-game results below.
+- The program is still under the 4,096-byte size limit.
+- No prize or specific competitive result is guaranteed.
+
+## Eight-game practice
+
+- A complete local eight-game comparison has now been run between the two engines.
+- The original 24,000-node engine finished with 1 win, 3 draws, and 4 losses.
+- The experimental 60,000-node variant finished with 3 wins, 2 draws, and 3 losses.
+- Applying the published practice-Elo formula to these games gives local estimates of about 1,173 for the original engine and 1,396 for the 60,000-node variant.
+- These figures are local estimates only, not the official practice score.
+- They do not guarantee a prize or any official result.
+- These are unofficial local practice results only, not tournament outcomes.
+- They are not prizes, scores, or standings from any official competition.
+- Local matches can vary with hardware, time controls, and opponent behavior.
+- The eight-game sample is small, so treat these numbers as a rough indication only.
+- No formal grading or prize claim is implied by either result.
+
 ## Limitations
 
 - Not validated in tournament play or against rated engines.
